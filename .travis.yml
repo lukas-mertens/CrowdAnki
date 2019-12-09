@@ -9,8 +9,9 @@ addons:
 install:
   - pip install pipenv
   - pipenv install --dev
+  - ./fetch_dependencies.sh
 
 script:
   - pipenv run mamba --enable-coverage ./
   - coverage xml -i -o build/coverage.xml
-  - sonar-scanner
+  - ./package_plugin.sh
